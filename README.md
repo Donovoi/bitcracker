@@ -1,6 +1,6 @@
 # BitCracker
 
-BitCracker is the first open source password cracking tool for storage devices (Hard Disk, USB Pendrive, SD card, etc...) encrypted with [BitLocker](https://technet.microsoft.com/en-us/library/cc766295(v=ws.10).aspx), an encryption feature available on Windows Vista, 7, 8.1, 10 and 11 (Ultimate, Pro and Enterprise editions, depending on Windows release). BitLocker offers a number of different authentication methods to encrypt a storage device like Trusted Platform Module (TPM), Smart Card, Recovery Password, User supplied password.
+BitCracker is the first open source password cracking tool for storage devices (Hard Disk, USB Pendrive, SD card, etc...) encrypted with [BitLocker](https://technet.microsoft.com/en-us/library/cc766295(v=ws.10).aspx), an encryption feature available on Windows Vista, 7, 8.1, 10 and 11 (Pro and Enterprise editions, plus Ultimate on Vista/7). BitLocker offers a number of different authentication methods to encrypt a storage device like Trusted Platform Module (TPM), Smart Card, Recovery Password, User supplied password.
 
 By means of a dictionary attack, BitCracker tries to find the correct User Password or Recovery Password to decrypt the encrypted storage device. It has been implemented in [CUDA](http://docs.nvidia.com/cuda) and [OpenCL](https://www.khronos.org/opencl).
 
