@@ -1,6 +1,6 @@
 # BitCracker
 
-BitCracker is the first open source password cracking tool for storage devices (Hard Disk, USB Pendrive, SD card, etc...) encrypted with [BitLocker](https://technet.microsoft.com/en-us/library/cc766295(v=ws.10).aspx), an encryption feature available on Windows Vista, 7, 8.1 and 10 (Ultimate, Pro and Enterprise editions). BitLocker offers a number of different authentication methods to encrypt a storage device like Trusted Platform Module (TPM), Smart Card, Recovery Password, User supplied password.
+BitCracker is the first open source password cracking tool for storage devices (Hard Disk, USB Pendrive, SD card, etc...) encrypted with [BitLocker](https://technet.microsoft.com/en-us/library/cc766295(v=ws.10).aspx), an encryption feature available on Windows Vista, 7, 8.1, 10 and 11 (Ultimate, Pro and Enterprise editions, depending on Windows release). BitLocker offers a number of different authentication methods to encrypt a storage device like Trusted Platform Module (TPM), Smart Card, Recovery Password, User supplied password.
 
 By means of a dictionary attack, BitCracker tries to find the correct User Password or Recovery Password to decrypt the encrypted storage device. It has been implemented in [CUDA](http://docs.nvidia.com/cuda) and [OpenCL](https://www.khronos.org/opencl).
 
@@ -67,7 +67,7 @@ Opening file ./Images/imgWin7
 ....
 
 Signature found at 0x02208000
-Version: 2 (Windows 7 or later)
+Version: 2 (Windows 7 or later, including Windows 11)
 
 VMK entry found at 0x022080bc
 VMK encrypted with user password found!
@@ -265,8 +265,8 @@ To test BitCracker on your system before starting the real attack, we provided s
 * imgWin7: BitLocker on Windows 7 Enteprise edition OS
 * imgWin8: BitLocker on Windows 8 Enteprise edition OS
 * imgWin10Compat.vhd: BitLocker (compatible mode) on Windows 10 Pro edition OS
-* imgWin10NotCompat.vhd: BitLocker (not compatible mode) on Windows 10 Pro edition OS
-* imgWin10NotCompatLongPsw.vhd : BitLocker (not compatible mode) on Windows 10 Pro edition OS with a longer user password
+* imgWin10NotCompat.vhd: BitLocker (not compatible mode / modern format also used by current Windows 11 releases) on Windows 10 Pro edition OS
+* imgWin10NotCompatLongPsw.vhd : BitLocker (not compatible mode / modern format also used by current Windows 11 releases) on Windows 10 Pro edition OS with a longer user password
 
 You can attack those images with both User and Recovery password modes, using the wordlists stored in the `Dictionary` folder.
 
