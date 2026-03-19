@@ -126,6 +126,17 @@ static void print_hex(unsigned char *str, int len, FILE *out)
 		fprintf(out, "%02x", str[i]);
 }
 
+static const char *bitlocker_version_label(int version)
+{
+	if (version == 1)
+		return "Windows Vista";
+
+	if (version == 2)
+		return "Windows 7 or later, including Windows 11";
+
+	return NULL;
+}
+
 int rp_search_salt_aes() {
 	uint8_t a,b;
 	int ret=0, x, y;
@@ -199,6 +210,7 @@ int parse_image(char * encryptedImagePath, char * outHashUser, char * outHashRec
 	long int fileLen=0, j=0;
 	int version = 0, i = 0, match = 0, ret = 0, outRP = 0, fve_block = 0;
 	unsigned char c,d;
+	const char *version_label;
 	
 	encryptedImage = fopen(encryptedImagePath, "r");
 
@@ -229,11 +241,10 @@ int parse_image(char * encryptedImagePath, char * outHashUser, char * outHashRec
 			fprintf(stdout, "\n************ Signature #%d found at 0x%lx ************\n", fve_block, (ftell(encryptedImage) - i - 1));
 			ret=fseek(encryptedImage, 1, SEEK_CUR);
 			version = fgetc(encryptedImage);
+			version_label = bitlocker_version_label(version);
 			fprintf(stdout, "Version: %d ", version);
-			if (version == 1)
-				fprintf(stdout, "(Windows Vista)\n");
-			else if (version == 2)
-				fprintf(stdout, "(Windows 7 or later)\n");
+			if (version_label != NULL)
+				fprintf(stdout, "(%s)\n", version_label);
 			else {
 				fprintf(stdout, "\nInvalid version, looking for a signature with valid version...\n");
 				match = 0;
@@ -519,4 +530,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-
