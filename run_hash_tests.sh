@@ -22,14 +22,14 @@ check_image() {
 	image_out_dir="$TMP_DIR/$image_name"
 	image_log="$TMP_DIR/$image_name.log"
 	expected_user_hash="$2"
-	expected_recv_hash="$3"
+	expected_recovery_hash="$3"
 
 	mkdir -p "$image_out_dir"
 	"$ROOT_DIR/build/bitcracker_hash" -o "$image_out_dir" -i "$image_path" > "$image_log" 2>&1
 
 	grep -q 'Version: 2 (Windows 7 or later, including Windows 11)' "$image_log"
 	test "$(cat "$image_out_dir/hash_user_pass.txt")" = "$expected_user_hash"
-	test "$(cat "$image_out_dir/hash_recv_pass.txt")" = "$expected_recv_hash"
+	test "$(cat "$image_out_dir/hash_recv_pass.txt")" = "$expected_recovery_hash"
 }
 
 check_image "imgWin7" \
